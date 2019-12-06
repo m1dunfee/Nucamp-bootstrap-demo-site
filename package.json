@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin",
+    "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
+    "imagemin": "imagemin images/* --out-dir=dist/img",
+    "usemin": "usemin contacts.html -d dist --htmlmin -o dist/contacts.html && usemin aboutus.html -d dist --htmlmin -o dist/aboutus.html && usemin index.html -d dist --htmlmin -o dist/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run lite",
-    "lite": "lite-server"
+    "start": "npm run watch:all",
+    "lite": "lite-server",
+    "scss": "node-sass -o css/ css/",
+    "watch:scss": "onchange \"css/*.scss\" -- npm run scss",
+    "watch:all": "parallelshell \"npm run watch:scss\" \"npm run lite\""
   },
   "repository": {
     "type": "git",
@@ -20,7 +28,15 @@
   "homepage": "https://github.com/m1dunfee/Nucamp-site#readme",
   "dependencies": {
     "bootstrap-social": "^5.1.1",
+    "copyfiles": "^2.1.1",
     "font-awesome": "^4.7.0",
-    "lite-server": "^2.5.4"
+    "imagemin-cli": "^5.0.0",
+    "lite-server": "^2.5.4",
+    "node-sass": "^4.13.0",
+    "onchange": "^6.1.0",
+    "usemin-cli": "^0.5.1"
+  },
+  "devDependencies": {
+    "parallelshell": "^3.0.1"
   }
 }

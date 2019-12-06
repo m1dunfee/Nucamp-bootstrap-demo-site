@@ -48,3 +48,11 @@ header h2 {
 .modal-content{
     color:black;
 }
+
+#carouselButton {
+    /* z index brings the element with the highest number to the front of the dom in this way it layers the dom elements */
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

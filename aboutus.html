@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Additional Css -->
+    <!-- build:css css/main.css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- endbuild -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
-    <link rel="stylesheet" href="styles.css"/>
     <title>NuCamp: A Better Way To Camp</title>
 </head>
 
@@ -21,16 +23,83 @@
     <header class="jumbotron jumbotron-fluid">
         <div class="Container">
             <div class="row">
-                <div class="col-4 col-sm--3 col-md-2 algn-self-center">
-                    <a href="index.html"><img src="img/logo.png" class="img-fluid"/></a>
-
-                </div>    
+                <div class="col-4 col-sm-3 col-md-2 algn-self-center">
+                    <img src="img/logo.png" class="img-fluid" />
+                </div>
                 <div class="col">
                     <h1>NuCamp</h1>
                     <h2>a better way to camp</h2>
                 </div>
+                <div class="col-md-3 my-auto">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-info" id="reserveButton">
+                        Reserve a Campsite
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="reserveForm" tabindex="-1" role="dialog"
+                        aria-labelledby="reserveFormTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-info text-white">
+                                    <h5 class="modal-title " id="reserveFormTitle">Reserve a Campsite</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <!-- remember form-group and form control add styling -->
+                                        <form id="reserveForm" class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label for="numCampers" class="form-check-label">Number of
+                                                        Campers</label>
+                                                </div>
+                                                <select class="form-control col" name="numCampers" id="numCampers">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                </select>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label for="date" class="form-check-label">Date</label>
+                                                </div>
+                                                <input class="form-control col-sm-6" type="date" id="date" name="date"
+                                                    value="2019-11-11" />
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label for="campesiteType" class="form-check-label">Campesite
+                                                        Type</label>
+                                                </div>
+                                                <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                                                    <label class="btn btn-secondary btn-success active">
+                                                        <input type="radio" name="options" id="option1"> RV
+                                                    </label>
+                                                    <label class="btn btn-secondary btn-info">
+                                                        <input type="radio" name="options" id="option2"> Tent
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" value="Reserve">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </header>
 
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top" >
@@ -56,7 +125,7 @@
                 </ul>
             <!-- login modal -->
             <span class="navbar-text ml-auto">
-                    <a role="button" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login</a>
+                    <a role="button" id="loginButton"><i class="fa fa-sign-in"></i> Login</a>
                 </span>
             </div>
         </div>
@@ -285,9 +354,11 @@
            </div>
         </div>
     </footer>
+    <!-- build:js js/main.js -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
-</body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="js/client.js"></script>
+    <!-- endbuild --></body>
 
 </html>
